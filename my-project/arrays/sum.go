@@ -9,3 +9,22 @@ func Sum(numbers []int) int {
 	}
 	return sum
 }
+
+func SumAllTails(numbersToSum ...[]int) []int {
+	var sums []int
+
+	// use the append function which takes a slice and a new value,
+	// then returns a new slice with all the items in it.
+	for _, numbers := range numbersToSum {
+
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+			continue
+		} else {	
+			tail := numbers[1:]
+			sums = append(sums, Sum(tail))
+		}
+	}
+
+	return sums
+}
